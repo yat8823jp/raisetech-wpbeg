@@ -1,11 +1,11 @@
-# WPBEG
+# RaiseTech-WPBEG
 
-Simple blogging theme for WordPress
+Use https://github.com/yat8823jp/wpbeg
 
 ```
 Theme Name: WPBEG
 Description: Simple blogging theme for WordPress
-Version: 1.0.4
+Version: 1.0.5
 Theme URI: https://github.com/yat8823jp/wpbeg
 Author: YAT
 Author URI: https://wp.yat-net.com
