@@ -1,0 +1,32 @@
+.home {
+	.header {
+		margin: 0 auto 60px;
+		padding-top: 40px;
+		background: url( ../images/001.jpg ) no-repeat;
+		background-size: cover;
+		background-position: 0 40%;
+		.header__ttl {
+			a {
+				&:hover, &:active {
+					color: #555;
+				}
+				&:link, &:visited {
+					color: #fff;
+				}
+			}
+		}
+		p {
+			color: #fff;
+		}
+		.menu {
+			a {
+				&:link, &:visited {
+					color: #fff;
+				}
+				&:hover, &:active {
+					color: #aaa;
+				}
+			}
+		}
+	}
+}

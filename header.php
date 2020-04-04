@@ -12,5 +12,5 @@
 			<h1 class="header__ttl"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 			<p class="header__descrition"><?php bloginfo( 'description' ); ?></p>
 			<?php get_search_form(); ?>
-			<?php wp_nav_menu(); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'global_nav' ) ); ?>
 		</header>
