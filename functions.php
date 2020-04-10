@@ -230,7 +230,7 @@ function add_bookdetail_fields() {
 	add_meta_box(
 		'book_setting',             //カスタムフィールドブロックに割り当てるID名
 		'本の情報',                   //カスタムフィールドのタイトル
-		'insert_bookdetail_fields', //入力エリアの HMTL
+		'insert_bookdetail_fields', //入力エリアの HTML
 		'book',                     //投稿タイプ。サンプルでは カスタムタクソノミー名。他に post 等が指定可能
 		'normal'                    //カスタムフィールドが表示される部分
 	);
@@ -240,6 +240,7 @@ add_action( 'admin_menu', 'add_bookdetail_fields' );
 //入力エリア
 function insert_bookdetail_fields() {
 	global $post;
+	echo '著者： <input type="text" name="book_author" value="'.get_post_meta( $post->ID, 'book_author', true ).'" size="50" style="margin-bottom: 10px;" />　<br>';
 	echo '価格： <input type="text" name="book_price" value="'.get_post_meta( $post->ID, 'book_price', true ).'" size="50" style="margin-bottom: 10px;" />　<br>';
 	echo 'ISBN： <input type="text" name="book_isbn" value="'.get_post_meta( $post->ID, 'book_isbn', true ).'" size="50" style="margin: 10px 0;" /><br>';
 	if( get_post_meta( $post->ID, 'book_label', true ) == "is-on" ) {
@@ -250,6 +251,12 @@ function insert_bookdetail_fields() {
 
 //カスタムフィールドの値を保存
 function save_custom_fields( $post_id ) {
+
+	if( !empty( $_POST['book_author'] ) ){
+		update_post_meta( $post_id, 'book_author', $_POST['book_author'] );
+	} else {
+		delete_post_meta( $post_id, 'book_author' );
+	}
 
 	if( !empty( $_POST['book_price'] ) ){
 		update_post_meta( $post_id, 'book_price', $_POST['book_price'] );
@@ -279,3 +286,19 @@ function tax_init() {
 }
 add_shortcode( 'tax', 'tax_func' );
 add_action( 'init', 'tax_init' );
+
+
+function custom_main_query ( $query ) {
+    if ( is_admin() || ! $query -> is_main_query() ) {
+        return;
+	}
+
+    if ( $query -> is_category() ) {
+        $query -> set( 'posts_per_page', 20 );
+	}
+
+    if ( $query -> is_search() ) {
+        $query -> set('cat', -2);
+    }
+}
+add_action( 'pre_get_posts', 'custom_main_query' );

@@ -342,26 +342,6 @@ textarea {
   color: #95989A;
 }
 
-.home .header {
-  margin-top: 0;
-  padding-top: 40px;
-  background: url(../images/001.jpg) no-repeat;
-  background-size: cover;
-  background-position: 0 40%;
-}
-
-.home .header a:hover, .home .header a:active {
-  color: #555;
-}
-
-.home .header a:link, .home .header a:visited {
-  color: #fff;
-}
-
-.home .header p {
-  color: #fff;
-}
-
 .c-grid {
   width: 100%;
   padding: 0 10px;
@@ -1140,6 +1120,7 @@ textarea {
   margin: auto auto 10px 0;
   margin-bottom: 10px;
   list-style: none;
+  word-wrap: break-word;
 }
 
 .p-sidebar .widget ul li::before {
