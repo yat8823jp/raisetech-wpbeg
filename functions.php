@@ -8,11 +8,11 @@
 		add_theme_support( 'html5',
 			array(
 				'menus',
-				'title-tag',
-				'post-thumbnails',
 				'automatic-feed-links',
 			 )
 		);
+		add_theme_support( 'title-tag' );
+		add_theme_support( 'post-thumbnails' );
 	}
 	register_nav_menus( array(
 		'global_nav' => esc_html__( 'global navigation', 'wpbeg' ),
@@ -245,7 +245,9 @@ function insert_bookdetail_fields() {
 	echo 'ISBN： <input type="text" name="book_isbn" value="'.get_post_meta( $post->ID, 'book_isbn', true ).'" size="50" style="margin: 10px 0;" /><br>';
 	if( get_post_meta( $post->ID, 'book_label', true ) == "is-on" ) {
 		$book_label_check = "checked";
-	}//チェックされていたらチェックボックスの$book_label_checkの場所にcheckedを挿入
+	} else {
+		$book_label_check = "";
+	} //チェックされていたらチェックボックスの$book_label_checkの場所にcheckedを挿入
 	echo 'ベストセラーラベル： <input type="checkbox" name="book_label" value="fa-check" '.$book_label_check.' ><br>';
 }
 
