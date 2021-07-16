@@ -243,7 +243,7 @@ function insert_bookdetail_fields() {
 	echo '著者： <input type="text" name="book_author" value="'.get_post_meta( $post->ID, 'book_author', true ).'" size="50" style="margin-bottom: 10px;" />　<br>';
 	echo '価格： <input type="text" name="book_price" value="'.get_post_meta( $post->ID, 'book_price', true ).'" size="50" style="margin-bottom: 10px;" />　<br>';
 	echo 'ISBN： <input type="text" name="book_isbn" value="'.get_post_meta( $post->ID, 'book_isbn', true ).'" size="50" style="margin: 10px 0;" /><br>';
-	if( get_post_meta( $post->ID, 'book_label', true ) == "is-on" ) {
+	if( get_post_meta( $post->ID, 'book_label', true ) ) {
 		$book_label_check = "checked";
 	} else {
 		$book_label_check = "";
